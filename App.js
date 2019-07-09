@@ -28,7 +28,7 @@ export default class App extends React.Component {
         return (
             <LinearGradient colors={primaryGradientArray} style={styles.container}>
                 <StatusBar barStyle="light-content" />
-                <Text style={styles.title}>Todo List</Text>
+                <Text style={styles.title}>To Do</Text>
                 <View style={styles.card}>
                     <TextInput style={styles.input} placeholder={"New To Do"}
                         value={newToDo} onChangeText={this._controlNewTodo}
@@ -177,17 +177,17 @@ const styles = StyleSheet.create({
     },
     title: {
         color: "white",
-        fontSize: 30,
+        fontSize: 42,
         marginTop: 50,
-        fontWeight: "500",
-        marginBottom: 30
+        fontWeight: "300",
+        marginBottom: 10,
     },
     card: {
         backgroundColor: "white",
         flex: 1,
         width: width - 25,
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
+        marginBottom: 75,
+        borderRadius: 10,
         ...Platform.select({
             ios: {
                 shadowColor: "rgb(50, 50, 50)",

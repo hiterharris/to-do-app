@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "React Native TodoList",
+    "name": "To Do App",
     "slug": "TodoList",
     "privacy": "public",
     "sdkVersion": "32.0.0",
@@ -12,8 +12,8 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "image": "./assets/splash-blue.png",
+      "resizeMode": "cover",
       "backgroundColor": "#000"
     },
     "updates": {
@@ -22,7 +22,7 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "android" : {
+    "android": {
       "package": "co.yunhojung.todolist"
     },
     "ios": {

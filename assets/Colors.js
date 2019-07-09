@@ -1,5 +1,7 @@
-const primaryStart = '#f18a69';
-const primaryEnd = '#d13e60';
+// const primaryStart = '#f18a69';
+// const primaryEnd = '#d13e60';
+const primaryStart = '#6c95d1';
+const primaryEnd = '#4267b2';
 export const primaryGradientArray = [primaryStart, primaryEnd];
 export const lightWhite = '#fcefe9';
 export const inputPlaceholder = '#f1a895';
