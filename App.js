@@ -1,24 +1,53 @@
-import React from 'react';
-import { StyleSheet, Text, View, StatusBar, TextInput, Dimensions, Platform, ScrollView, AsyncStorage } from 'react-native';
-import Todo from './Todo';
+import React, { Component } from 'react';
+import {
+    StyleSheet,
+    Text,
+    View,
+    Image,
+    StatusBar,
+    TextInput,
+    Dimensions,
+    Platform,
+    ScrollView,
+    AsyncStorage,
+    Button,
+} from 'react-native';
+import Todo from './src/screens/ToDo';
 import { AppLoading } from 'expo';
 import uuidv1 from 'uuid/v1';
 import { LinearGradient } from 'expo';
-import { primaryGradientArray } from './assets/Colors';
-import { gradientStart, gradientEnd } from './assets/Colors';
+import { primaryGradientArray } from './src/assets/Colors';
+import { gradientStart, gradientEnd } from './src/assets/Colors';
 
 const { height, width } = Dimensions.get("window");
 
-export default class App extends React.Component {
-    state = {
-        newToDo: "",
-        loadedToDos: false,
-        toDos: {}
+export default class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            newToDo: "",
+            loadedToDos: false,
+            toDos: {},
+        }
     }
 
     componentDidMount = () => {
         this._loadToDos()
     }
+
+    // addNew = () => {
+    //     if (this.state.addButtonClicked === true) {
+    //         return (
+    //             <TextInput style={styles.input} placeholder={"New To Do"}
+    // value={newToDo} onChangeText={this._controlNewTodo}
+    // placeholderTextColor={"#999"} returnKeyType={"done"} autoCorrect={false}
+    // onSubmitEditing={this._addToDo}
+    // autoFocus={true} />
+    //         );
+    //     } else {
+    //         return ''
+    //     }
+    // }
 
     render() {
         const { newToDo, loadedToDos, toDos } = this.state;
@@ -30,11 +59,14 @@ export default class App extends React.Component {
                 <StatusBar barStyle="light-content" />
                 <Text style={styles.title}>To Do</Text>
                 <View style={styles.card}>
-                    <TextInput style={styles.input} placeholder={"New To Do"}
-                        value={newToDo} onChangeText={this._controlNewTodo}
-                        placeholderTextColor={"#999"} returnKeyType={"done"} autoCorrect={false}
-                        onSubmitEditing={this._addToDo}
-                        autoFocus={true} />
+                    <View style={styles.inputContainer}>
+                        <Image style={styles.addNew} source={require('./src/assets/images/add-button.png')} />
+                        <TextInput style={styles.input} placeholder={"New To Do"}
+                            value={newToDo} onChangeText={this._controlNewTodo}
+                            placeholderTextColor={"#999"} returnKeyType={"done"} autoCorrect={false}
+                            onSubmitEditing={this._addToDo}
+                            autoFocus={true} />
+                    </View>
                     <ScrollView contentContainerStyle={styles.toDos}>
                         {Object.values(toDos).reverse().map(toDo => (
                             <Todo key={toDo.id}
@@ -203,13 +235,25 @@ const styles = StyleSheet.create({
             }
         })
     },
+    inputContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
+        margin: 20,
+    },
+    addNew: {
+        width: 40,
+        height: 40,
+    },
     input: {
-        padding: 20,
-        borderBottomColor: "#bbb",
-        borderBottomWidth: 1,
-        fontSize: 25
+        fontSize: 25,
+        paddingTop: 5,
+        paddingLeft: 10,
     },
     toDos: {
-        alignItems: "center"
-    }
+        height: 500,
+        borderTopColor: 'lightgrey',
+        borderTopWidth: 1,
+    },
 });

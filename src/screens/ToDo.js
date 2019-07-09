@@ -4,7 +4,7 @@ import PropTypes from 'proptypes'
 
 const { width, height } = Dimensions.get("window")
 
-export default class Todo extends Component {
+export default class ToDo extends Component {
     constructor(props) {
         super(props)
         this.state = {
