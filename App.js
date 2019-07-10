@@ -227,6 +227,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
         margin: 20,
+        height: 50,
     },
     addNew: {
         width: 40,
@@ -238,7 +239,7 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
     },
     toDos: {
-        height: 500,
+        height: height * .55,
         borderTopColor: 'lightgrey',
         borderTopWidth: 1,
     },
