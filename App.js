@@ -35,20 +35,6 @@ export default class App extends Component {
         this._loadToDos()
     }
 
-    // addNew = () => {
-    //     if (this.state.addButtonClicked === true) {
-    //         return (
-    //             <TextInput style={styles.input} placeholder={"New To Do"}
-    // value={newToDo} onChangeText={this._controlNewTodo}
-    // placeholderTextColor={"#999"} returnKeyType={"done"} autoCorrect={false}
-    // onSubmitEditing={this._addToDo}
-    // autoFocus={true} />
-    //         );
-    //     } else {
-    //         return ''
-    //     }
-    // }
-
     render() {
         const { newToDo, loadedToDos, toDos } = this.state;
         if (!loadedToDos) {
@@ -60,8 +46,8 @@ export default class App extends Component {
                 <Text style={styles.title}>To Do</Text>
                 <View style={styles.card}>
                     <View style={styles.inputContainer}>
-                        <Image style={styles.addNew} source={require('./src/assets/images/add-button.png')} />
-                        <TextInput style={styles.input} placeholder={"New To Do"}
+                        <Image style={styles.addNew} source={require('./src/assets/images/add-button-grey.png')} />
+                        <TextInput style={styles.input} placeholder={"New Note"}
                             value={newToDo} onChangeText={this._controlNewTodo}
                             placeholderTextColor={"#999"} returnKeyType={"done"} autoCorrect={false}
                             onSubmitEditing={this._addToDo}

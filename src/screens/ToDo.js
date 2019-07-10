@@ -1,5 +1,13 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet, Dimensions, TextInput } from 'react-native'
+import {
+    View,
+    Text,
+    TouchableOpacity,
+    StyleSheet,
+    Dimensions,
+    TextInput,
+    Image,
+} from 'react-native'
 import PropTypes from 'proptypes'
 
 const { width, height } = Dimensions.get("window")
@@ -23,27 +31,35 @@ export default class ToDo extends Component {
         updateToDo: PropTypes.func.isRequired
     }
 
+    status = () => {
+        if (this.props.isCompleted) {
+            return <Image style={styles.complete} source={require('../assets/images/complete-icon.png')} />;
+        } else {
+            return <Image style={styles.incomplete} source={require('../assets/images/incomplete-icon.png')} />;
+        }
+    }
 
     render() {
         const { isEditing, toDoValue } = this.state
         const { text, id, deleteToDo, isCompleted } = this.props
         return (
             <View style={styles.container}>
-                <View style={styles.column}>
-                    <TouchableOpacity onPress={this._toggleComplete}>
-                        <View style={[styles.circle,
-                        isCompleted ? styles.completedCircle : styles.unCompletedCircle]} />
-                    </TouchableOpacity>
-                    {isEditing ? (<TextInput
-                        style={[styles.text, styles.input, isCompleted ? styles.completedText : styles.unCompletedText]}
-                        value={toDoValue} multiline={true} onChangeText={this._controlInput} returnKeyType={"done"}
-                        onBlur={this._finishEditing}
-                        underlineColorAndroid={"transparent"} />) :
-                        (<Text style={[styles.text, isCompleted ?
-                            styles.completedText :
-                            styles.unCompletedText]}>{text}
-                        </Text>)}
-                </View>
+                <TouchableOpacity onPress={this._toggleComplete}>
+                    <View style={styles.column}>
+                        <View>
+                            {this.status()}
+                        </View>
+                        {isEditing ? (<TextInput
+                            style={[styles.text, styles.input, isCompleted ? styles.completedText : styles.unCompletedText]}
+                            value={toDoValue} multiline={true} onChangeText={this._controlInput} returnKeyType={"done"}
+                            onBlur={this._finishEditing}
+                            underlineColorAndroid={"transparent"} />) :
+                            (<Text style={[styles.text, isCompleted ?
+                                styles.completedText :
+                                styles.unCompletedText]}>{text}
+                            </Text>)}
+                    </View>
+                </TouchableOpacity>
                 {isEditing ? (
                     <View style={styles.actions}>
                         <TouchableOpacity onPressOut={this._finishEditing}>
@@ -68,6 +84,7 @@ export default class ToDo extends Component {
                                 </View>
                             </TouchableOpacity>
                         </View>
+
                     )
                 }
             </View>
@@ -111,20 +128,22 @@ const styles = StyleSheet.create({
         borderBottomWidth: StyleSheet.hairlineWidth,
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
     },
-    circle: {
+    status: {
+        width: 50,
+        height: 50,
+    },
+    complete: {
         width: 30,
         height: 30,
-        borderRadius: 15,
-        borderWidth: 3,
-        marginRight: 20
+        margin: 5,
     },
-    completedCircle: {
-        borderColor: "#bbb",
-    },
-    unCompletedCircle: {
-        borderColor: "#F23657"
+    incomplete: {
+        width: 30,
+        height: 30,
+        opacity: .90,
+        margin: 5,
     },
     text: {
         fontWeight: "600",
