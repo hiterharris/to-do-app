@@ -222,25 +222,25 @@ const styles = StyleSheet.create({
         })
     },
     inputContainer: {
-        flex: 1,
         flexDirection: 'row',
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
-        margin: 20,
-        height: 50,
+        paddingLeft: '5%',
     },
     addNew: {
         width: 40,
         height: 40,
+        marginTop: '4%',
     },
     input: {
         fontSize: 25,
-        paddingTop: 5,
-        paddingLeft: 10,
+        marginTop: '5.5%',
+        marginLeft: '2%',
     },
     toDos: {
-        height: height * .55,
+        height: '80%',
         borderTopColor: 'lightgrey',
         borderTopWidth: 1,
+        marginTop: '5%',
     },
 });
